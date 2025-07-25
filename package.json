@@ -22,7 +22,6 @@
     "react-dom": "^17.0.2",
     "react-scripts": "^5.0.1"
   },
-  "homepage": "http://Vasusahu.github.io/todo-app",
   "browserslist": {
     "production": [
       ">0.2%",
