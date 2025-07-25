@@ -1,9 +1,7 @@
 # Todo App
-
 This is a simple Todo application built with React. It allows users to add, toggle, and delete todo items.
 
 ## Project Structure
-
 The project has the following structure:
 
 ```
@@ -46,16 +44,23 @@ To get started with the Todo app, follow these steps:
    Navigate to `http://localhost:3000` to see the app in action.
 
 ## Features
+- Create
+- Read
+- Update
+- Delete
 
-- Add new todos
-- Toggle completion status of todos
-- Delete todos
+## Functionality
+- Dark Mode Toggle
+- Added Local Storage(5 MB)
+- Task Completion Toggle
 
 ## Technologies Used
-
 - React
-- ReactDOM
+- JavaScript
+- HTML & CSS
 
 ## License
-
 This project is licensed under the MIT License.
+
+## To view website
+Go to Netlify: [My Netlify](https://todowhiz.netlify.app/)
