@@ -9,6 +9,9 @@ const App = () => {
         return saved ? JSON.parse(saved) : [];
     });
 
+    const [taskToEdit, setTaskToEdit] = useState(null);
+    const [darkMode, setDarkMode] = useState(false);
+
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
@@ -20,6 +23,15 @@ const App = () => {
         ]);
     };
 
+    const editTask = (id, newText) => {
+        setTodos(
+            todos.map(todo =>
+                todo.id === id ? { ...todo, text: newText } : todo
+            )
+        );
+        setTaskToEdit(null);
+    };
+
     const toggleTask = (id) => {
         setTodos(
             todos.map(todo =>
@@ -28,11 +40,14 @@ const App = () => {
         );
     };
 
-    const deleteTask = (id) => {
-        setTodos(todos.filter(todo => todo.id !== id));
+    // ✅ Modified to accept single or multiple IDs
+    const deleteTask = (ids) => {
+        if (Array.isArray(ids)) {
+            setTodos(todos.filter(todo => !ids.includes(todo.id)));
+        } else {
+            setTodos(todos.filter(todo => todo.id !== ids));
+        }
     };
-
-    const [darkMode, setDarkMode] = useState(false);
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -44,11 +59,18 @@ const App = () => {
                 {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
             </button>
             <h1>Todo App</h1>
-            <TodoInput addTask={addTask} />
+
+            <TodoInput
+                addTask={addTask}
+                editTask={editTask}
+                taskToEdit={taskToEdit}
+            />
+
             <TodoList
                 todos={todos}
                 onToggle={toggleTask}
-                onDelete={deleteTask}
+                onDelete={deleteTask} // ✅ handles both single + multiple now
+                onEdit={(todo) => setTaskToEdit(todo)}
             />
         </div>
     );
