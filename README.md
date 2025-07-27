@@ -53,6 +53,7 @@ To get started with the Todo app, follow these steps:
 - Dark Mode Toggle
 - Added Local Storage(5 MB)
 - Task Completion Toggle
+- Multiple Delete Supported
 
 ## Technologies Used
 - React
